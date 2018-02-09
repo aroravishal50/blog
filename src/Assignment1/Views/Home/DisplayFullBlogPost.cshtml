@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Assignment1.Models.BlogPost>
+@using Microsoft.AspNetCore.Http;
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "_Layout";
+}
+
+
+<div class="container-fluid text-center">
+    <fieldset style="width: 300px">
+        <br />
+        <br />
+        <legend> </legend>
+        <table>
+            <tr>
+                <td>@Context.Session.GetString("Title")</td>
+
+            </tr>
+            <tr>
+                <td>@Context.Session.GetString("Content")</td>
+            </tr>
+            <tr>
+                <td>@Context.Session.GetString("Posted Values")</td>
+            </tr>
+            <tr>
+                <td>@Context.Session.GetString("EmailAddress")</td>
+            </tr>
+            <tr>
+                <td>@Context.Session.GetString("FirstName")</td>
+            </tr>
+            <tr>
+                <td>@Context.Session.GetString("LastName")</td>
+            </tr>
+            <tr>
+
+                @{
+                    String allComments = Context.Session.GetString("AllComments");
+                    String[] arrComments = allComments.Split(new[] { "x01" }, StringSplitOptions.None);
+                    foreach (var comm in arrComments)
+                    {
+                        <td>@comm</td>
+
+                    }
+                }
+
+            </tr>
+
+
+        </table>
+        </fieldset>
+        </div>
+
+        <br />
+        @if (null != Context.Session.GetString("UserId"))
+        {
+
+    <form asp-controller="Home" asp-action="DisplayFullBlogPost">
+        <!--<input type="hidden" value="Convert.ToInt16(Context.Session.GetString("UserId"));" asp-for="UserId" />-->
+        <fieldset>
+            <Legend>Add a Comment</Legend>
+
+           
+            <div class="form-group">
+                <label>Comment:</label>
+                <input name="Comment" class="form-control">
+            </div>
+            <br />
+            <br />
+            <input type="submit" value="Add Comment" />
+        </fieldset>
+    </form>
+
+
+        }

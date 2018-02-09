@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "_Layout";
+}
+
+
+<div class="container-fluid text-center">
+    <form asp-controller="Home" asp-action="Login">
+        <fieldset style="width: 300px">
+            <br />
+            <br />
+            <legend>Register </legend>
+            <table>
+          
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="EmailAddress" required="required" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="Password" required="required" /></td>
+                </tr>
+              
+            </table>
+            <br />
+            <input type="submit" value="Login" />
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment1</title>
+   <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+</head>
+<body>
+    <header>
+        Header!
+        <br />
+        <br />
+        @if (null != Context.Session.GetString("FName"))
+            {
+            <h2>@Context.Session.GetString("FName")</h2>
+            <h2>@Context.Session.GetString("LName")</h2>
+
+
+
+
+        }
+        else
+        {
+            @Html.ActionLink("Login", "Login", "Home");
+            @Html.ActionLink("Register", "Register", "Home");
+
+        }
+        @if (null != Context.Session.GetString("RoleId"))
+        {
+            @if (Context.Session.GetString("RoleId").Equals("2"))
+            {
+                @Html.ActionLink("AddBlogPost", "AddBlogPost", "Home");
+            }
+        }
+
+
+    </header>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+    
+       <div id="footer">
+        &copy; 
+           <h4></h4>
+           <h4></h4>
+           <h4></h4>
+
+    </div>
+</body>
+</html>
